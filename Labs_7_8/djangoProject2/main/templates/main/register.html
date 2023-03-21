@@ -1,0 +1,14 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+    <h1>Регистрация</h1>
+    <form class="register" method="post">
+        {% csrf_token %}
+        {% for el in form %}
+            <p>{{ el.label }} {{ el }} </p>
+            <div class="form-error">{{ el.errors }}</div>
+        {% endfor %}
+        <button class="btn_register" type="submit"> Завершить </button>
+    </form>
+    </div>
+{% endblock %}

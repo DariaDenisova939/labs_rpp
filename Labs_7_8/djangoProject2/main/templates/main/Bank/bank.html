@@ -1,0 +1,23 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+        <h1>Банк</h1>
+        <table align="center">
+        <tr>
+          <td align="center">Название банка</td>
+          <td align="center">Государственный или частный</td>
+          <td align="center">Адрес главного офиса</td>
+          </tr>
+        {% for el in attributes %}
+            <tr>
+                <td>{{ el.name }}</td>
+                <td>{{ el.state_or_private }}</td>
+                <td>{{ el.address }}</td>
+                <td><a href="{% url 'delete_check' pk=el.id idx=5 %}"><button>Удалить</button></a>
+                <a href="{% url 'update_bank' el.id %}"><button>Изменить</button></a></td>
+             </tr>
+        {% endfor %}
+        </table>
+        <a href="{% url 'create' idx=5 %}"><li><button>Новая запись</button></li></a>
+    </div>
+{% endblock %}

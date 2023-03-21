@@ -1,0 +1,16 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+    <h1>Персональные данные</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.participant_id }}<br>
+        {{ form.passport_series }}<br>
+        {{ form.passport_number }}<br>
+        {{ form.division_code }}<br>
+        {{ form.place_of_residence }}<br>
+        <span>{{ error }}</span>
+        <button type="submit"> Добавить </button>
+    </form>
+    </div>
+{% endblock %}

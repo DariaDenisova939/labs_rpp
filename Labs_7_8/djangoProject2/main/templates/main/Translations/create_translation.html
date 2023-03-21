@@ -1,0 +1,15 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+    <h1>Переводы</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.device }}<br>
+        {{ form.participant_id }}<br>
+        {{ form.operation }}<br>
+        {{ form.number_type }}<br>
+        <span>{{ error }}</span><br>
+        <button type="submit"> Добавить </button>
+    </form>
+    </div>
+{% endblock %}

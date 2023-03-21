@@ -1,0 +1,21 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+        <h1>Карты</h1>
+        <table align="center">
+        <tr>
+          <td align="center">id участника</td>
+          <td align="center">id банка</td>
+          </tr>
+        {% for el in attributes %}
+            <tr>
+                <td>{{ el.participant_id }}</td>
+                <td>{{ el.bank_id }}</td>
+                <td><a href="{% url 'delete_check' pk=el.id idx=1 %}"><button>Удалить</button></a>
+                <a href="{% url 'update_card' el.id %}"><button>Изменить</button></a></td>
+             </tr>
+        {% endfor %}
+        </table>
+        <a href="{% url 'create' idx=1 %}"><li><button>Новая запись</button></li></a>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+        <h1>Переводы</h1>
+        <table align="center">
+        <tr>
+          <td align="center">Устройство с которого выполнен перевод</td>
+          <td align="center">id Участника перевода</td>
+          <td align="center">Операция</td>
+          <td align="center">Тип номера по которому был совершен перевод</td>
+          </tr>
+        {% for el in attributes %}
+            <tr>
+                <td>{{ el.device }}</td>
+                <td>{{ el.participant_id }}</td>
+                <td>{{ el.operation }}</td>
+                <td>{{ el.number_type }}</td>
+                {% if role == 'Admin' %}
+                <td><a href="{% url 'delete_check' pk=el.id idx=4 %}"><button>Удалить</button></a>
+                <a href="{% url 'update_translation' el.id %}"><button>Изменить</button></a></td>
+                {% endif %}
+             </tr>
+        {% endfor %}
+        </table>
+        <a href="{% url 'create' idx=4 %}"><li><button>Новая запись</button></li></a>
+    </div>
+{% endblock %}

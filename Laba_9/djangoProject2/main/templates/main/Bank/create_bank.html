@@ -1,0 +1,14 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+    <h1>Банк</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.name }}<br>
+        {{ form.state_or_private }}<br>
+        {{ form.address }}<br>
+        <span>{{ error }}</span>
+        <button type="submit"> Добавить </button>
+    </form>
+    </div>
+{% endblock %}

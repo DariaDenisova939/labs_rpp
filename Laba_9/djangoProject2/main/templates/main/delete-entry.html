@@ -1,0 +1,9 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+            <h1>Вы действительно хотите удалить запись?</h1>
+            {% csrf_token %}
+            <a href="{% url 'delete' idx=idx_tmp pk=pk_tmp %}"><button>Удалить</button></a>
+            <a onclick="history.back()"><button type="button">Назад</button></a>
+    </div>
+{% endblock %}

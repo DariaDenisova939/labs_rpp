@@ -1,0 +1,27 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+        <h1>Персональные данные</h1>
+        <table align="center">
+        <tr>
+          <td align="center">id Участника операции</td>
+          <td align="center">Серия паспорта</td>
+          <td align="center">Номер паспорта</td>
+          <td align="center">Код подразделения</td>
+          <td align="center">Адрес регистрации</td>
+          </tr>
+        {% for el in attributes %}
+            <tr>
+                <td>{{ el.participant_id }}</td>
+                <td>{{ el.passport_series }}</td>
+                <td>{{ el.passport_number }}</td>
+                <td>{{ el.division_code }}</td>
+                <td>{{ el.place_of_residence }}</td>
+                <td><a href="{% url 'delete_check' pk=el.id idx=3 %}"><button>Удалить</button></a>
+                <a href="{% url 'update_personal_data' el.id %}"><button>Изменить</button></a></td>
+             </tr>
+        {% endfor %}
+        </table>
+        <a href="{% url 'create' idx=3 %}"><li><button>Новая запись</button></li></a>
+    </div>
+{% endblock %}

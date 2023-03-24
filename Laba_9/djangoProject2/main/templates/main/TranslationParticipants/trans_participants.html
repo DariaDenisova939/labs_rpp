@@ -1,0 +1,27 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+        <h1>Участники финансового перевода</h1>
+        <table align="center">
+        <tr>
+          <td align="center">Имя</td>
+          <td align="center">Фамилия</td>
+          <td align="center">Отчество</td>
+          <td align="center">Номер телефона</td>
+          <td align="center">Операция</td>
+          </tr>
+        {% for el in attributes %}
+            <tr>
+                <td>{{ el.name }}</td>
+                <td>{{ el.surname }}</td>
+                <td>{{ el.patronymic }}</td>
+                <td>{{ el.phone_number }}</td>
+                <td>{{ el.operation }}</td>
+                <td><a href="{% url 'delete_check' pk=el.id idx=0 %}"><button>Удалить</button></a>
+                <a href="{% url 'update_participant' pk=el.id %}"><button>Изменить</button></a></td>
+             </tr>
+        {% endfor %}
+        </table>
+        <a href="{% url 'create' idx=0 %}"><li><button>Новая запись</button></li></a>
+    </div>
+{% endblock %}

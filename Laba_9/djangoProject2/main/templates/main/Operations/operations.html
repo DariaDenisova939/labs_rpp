@@ -1,0 +1,31 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+        <h1>Операции</h1>
+        <table align="center">
+        <tr>
+          <td align="center">id Участника операции</td>
+          <td align="center">Сумма</td>
+          <td align="center">Валюта</td>
+          <td align="center">Дата операции</td>
+          <td align="center">Время операции</td>
+          <td align="center">Операция</td>
+          </tr>
+        {% for el in attributes %}
+            <tr>
+                <td>{{ el.participant_id }}</td>
+                <td>{{ el.transfer_amount }}</td>
+                <td>{{ el.currency }}</td>
+                <td>{{ el.date }}</td>
+                <td>{{ el.time }}</td>
+                <td>{{ el.operation }}</td>
+                {% if role == 'Admin' %}
+                <td><a href="{% url 'delete_check' pk=el.id idx=2 %}"><button>Удалить</button></a>
+                <a href="{% url 'update_operation' el.id %}"><button>Изменить</button></a></td>
+                {% endif %}
+             </tr>
+        {% endfor %}
+        </table>
+        <a href="{% url 'create' idx=2 %}"><li><button>Новая запись</button></li></a>
+    </div>
+{% endblock %}

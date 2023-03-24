@@ -1,0 +1,13 @@
+{% extends 'main/navigation.html' %}
+{% block content %}
+    <div class="features">
+    <h1>Карта</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.participant_id }}<br>
+        {{ form.bank_id }}<br>
+        <span>{{ error }}</span>
+        <button type="submit"> Добавить </button>
+    </form>
+    </div>
+{% endblock %}
